@@ -84,9 +84,9 @@ public class HmacAuthenticationProvider extends SimpleAuthenticationProvider {
         this.timeProvider = timeProvider;
         this.environment = environment;
 
-        String secretKey = LocalEnvironment.getRequiredProperty(SECRET_KEY);
+        String secretKey = new LocalEnvironment.getRequiredProperty(SECRET_KEY);
         signatureVerifier = new SignatureVerifier(secretKey);
-
+        
         if (LocalEnvironment.getProperty(TIMESTAMP_AGE_LIMIT) == null){
            timestampAgeLimit = TEN_MINUTES;
         }  else {
