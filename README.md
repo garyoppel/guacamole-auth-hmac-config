@@ -21,7 +21,7 @@ The resulting jar file will be placed in
 
 ## Deployment & Configuration
 
-**Warning** This plugin runs on Guacamole 0.9.9, so you must be running
+**Warning** This plugin runs on Guacamole 1.1.0, so you must be running
 at least that version before using this plugin.
 
 Copy `guacamole-auth-hmac-config-<version>.jar` to the location specified by
