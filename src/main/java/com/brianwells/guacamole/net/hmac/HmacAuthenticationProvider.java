@@ -104,7 +104,7 @@ public class HmacAuthenticationProvider extends SimpleAuthenticationProvider {
         if (environment.getProperty(TIMESTAMP_AGE_LIMIT) == null){
            timestampAgeLimit = TEN_MINUTES;
         }  else {
-           timestampAgeLimit = LocalEnvironment.getProperty(TIMESTAMP_AGE_LIMIT);
+           timestampAgeLimit = environment.getProperty(TIMESTAMP_AGE_LIMIT);
         }
     }
 
@@ -280,8 +280,9 @@ public class HmacAuthenticationProvider extends SimpleAuthenticationProvider {
         if(config == null) {
             return null;
         }
-
-        String serverId = LocalEnvironment.getRequiredProperty(HMAC_SERVER_ID);
+        
+        environment = new LocalEnvironment();
+        String serverId = environment.getRequiredProperty(HMAC_SERVER_ID);
 
         StringBuilder message = new StringBuilder(timestamp)
             .append(config.getProtocol())
