@@ -81,7 +81,7 @@ public class HmacAuthenticationProviderTest extends TestCase {
     public void testTimestampFresh() throws Exception {
         HttpServletRequest request = getHttpServletRequest();
 
-        Credentials credentials = new Credentials();
+        Credentials credentials = new Credentials(null,null,null);
         credentials.setRequest(request);
 
         TimeProviderInterface timeProvider = mock(TimeProviderInterface.class);
@@ -101,7 +101,7 @@ public class HmacAuthenticationProviderTest extends TestCase {
     public void testTimestampStale() throws Exception {
         HttpServletRequest request = getHttpServletRequest();
 
-        Credentials credentials = new Credentials();
+        Credentials credentials = new Credentials(null,null,null);
         credentials.setRequest(request);
 
         TimeProviderInterface timeProvider = mock(TimeProviderInterface.class);
