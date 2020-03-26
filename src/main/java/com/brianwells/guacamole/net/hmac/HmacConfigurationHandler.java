@@ -2,7 +2,7 @@ package com.brianwells.guacamole.net.hmac;
 
 import java.util.HashMap;
 import java.util.Map;
-import org.glyptodon.guacamole.protocol.GuacamoleConfiguration;
+import org.apache.guacamole.protocol.GuacamoleConfiguration;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
