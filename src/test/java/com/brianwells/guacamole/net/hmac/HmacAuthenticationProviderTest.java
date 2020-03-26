@@ -2,14 +2,14 @@ package com.brianwells.guacamole.net.hmac;
 
 import java.io.File;
 import junit.framework.TestCase;
-import org.glyptodon.guacamole.environment.Environment;
-import org.glyptodon.guacamole.environment.LocalEnvironment;
-import org.glyptodon.guacamole.GuacamoleException;
-import org.glyptodon.guacamole.net.auth.Credentials;
-import org.glyptodon.guacamole.net.auth.UserContext;
-import org.glyptodon.guacamole.net.auth.simple.SimpleUserContext;
-import org.glyptodon.guacamole.properties.GuacamoleProperties;
-import org.glyptodon.guacamole.protocol.GuacamoleConfiguration;
+import org.apache.guacamole.environment.Environment;
+import org.apache.guacamole.environment.LocalEnvironment;
+import org.apache.guacamole.GuacamoleException;
+import org.apache.guacamole.net.auth.Credentials;
+import org.apache.guacamole.net.auth.UserContext;
+import org.apache.guacamole.net.auth.simple.SimpleUserContext;
+import org.apache.guacamole.properties.GuacamoleProperties;
+import org.apache.guacamole.protocol.GuacamoleConfiguration;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
