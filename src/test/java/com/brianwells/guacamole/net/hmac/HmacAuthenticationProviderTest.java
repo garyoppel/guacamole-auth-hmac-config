@@ -150,9 +150,11 @@ public class HmacAuthenticationProviderTest extends TestCase {
     }
 
     private void setGuacamoleProperty(String propertyName, String propertyValue) throws NoSuchFieldException, IllegalAccessException {
-        Field field = LocalEnvironment.class.getDeclaredField("properties");
+        environment = new LocalEnvironment();
+        
+        Field field = environment.class.getDeclaredField("properties");
         field.setAccessible(true);
-        Properties properties =  (Properties) field.get(LocalEnvironment.class);
+        Properties properties =  (Properties) field.get(environment.class);
         properties.setProperty(propertyName, propertyValue);
     }
 }
