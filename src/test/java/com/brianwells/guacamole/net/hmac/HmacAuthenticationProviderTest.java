@@ -8,7 +8,7 @@ import org.apache.guacamole.GuacamoleException;
 import org.apache.guacamole.net.auth.Credentials;
 import org.apache.guacamole.net.auth.UserContext;
 import org.apache.guacamole.net.auth.simple.SimpleUserContext;
-import org.apache.guacamole.properties.GuacamoleProperties;
+import org.apache.guacamole.properties.GuacamoleProperty;
 import org.apache.guacamole.protocol.GuacamoleConfiguration;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
