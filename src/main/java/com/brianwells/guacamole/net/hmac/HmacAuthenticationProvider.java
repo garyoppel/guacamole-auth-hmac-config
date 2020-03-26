@@ -16,7 +16,6 @@ import org.apache.guacamole.net.auth.Credentials;
 import org.apache.guacamole.net.auth.UserContext;
 import org.apache.guacamole.net.auth.simple.SimpleAuthenticationProvider;
 import org.apache.guacamole.net.auth.simple.SimpleUserContext;
-import org.apache.guacamole.properties.GuacamoleProperties;
 import org.apache.guacamole.properties.IntegerGuacamoleProperty;
 import org.apache.guacamole.properties.StringGuacamoleProperty;
 import org.apache.guacamole.protocol.GuacamoleConfiguration;
@@ -84,13 +83,13 @@ public class HmacAuthenticationProvider extends SimpleAuthenticationProvider {
         this.timeProvider = timeProvider;
         this.environment = environment;
 
-        String secretKey = GuacamoleProperties.getRequiredProperty(SECRET_KEY);
+        String secretKey = LocalEnvironment.getRequiredProperty(SECRET_KEY);
         signatureVerifier = new SignatureVerifier(secretKey);
 
-        if (GuacamoleProperties.getProperty(TIMESTAMP_AGE_LIMIT) == null){
+        if (LocalEnvironment.getProperty(TIMESTAMP_AGE_LIMIT) == null){
            timestampAgeLimit = TEN_MINUTES;
         }  else {
-           timestampAgeLimit = GuacamoleProperties.getProperty(TIMESTAMP_AGE_LIMIT);
+           timestampAgeLimit = LocalEnvironment.getProperty(TIMESTAMP_AGE_LIMIT);
         }
     }
 
@@ -98,13 +97,13 @@ public class HmacAuthenticationProvider extends SimpleAuthenticationProvider {
         timeProvider = new DefaultTimeProvider();
         environment = new LocalEnvironment();
 
-        String secretKey = GuacamoleProperties.getRequiredProperty(SECRET_KEY);
+        String secretKey = LocalEnvironment.getRequiredProperty(SECRET_KEY);
         signatureVerifier = new SignatureVerifier(secretKey);
 
-        if (GuacamoleProperties.getProperty(TIMESTAMP_AGE_LIMIT) == null){
+        if (LocalEnvironment.getProperty(TIMESTAMP_AGE_LIMIT) == null){
            timestampAgeLimit = TEN_MINUTES;
         }  else {
-           timestampAgeLimit = GuacamoleProperties.getProperty(TIMESTAMP_AGE_LIMIT);
+           timestampAgeLimit = LocalEnvironment.getProperty(TIMESTAMP_AGE_LIMIT);
         }
     }
 
@@ -281,7 +280,7 @@ public class HmacAuthenticationProvider extends SimpleAuthenticationProvider {
             return null;
         }
 
-        String serverId = GuacamoleProperties.getRequiredProperty(HMAC_SERVER_ID);
+        String serverId = LocalEnvironment.getRequiredProperty(HMAC_SERVER_ID);
 
         StringBuilder message = new StringBuilder(timestamp)
             .append(config.getProtocol())
