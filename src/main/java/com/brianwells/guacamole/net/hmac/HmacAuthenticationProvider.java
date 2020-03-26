@@ -342,7 +342,7 @@ public class HmacAuthenticationProvider extends SimpleAuthenticationProvider {
         return new HmacAuthenticatedUser(this, credentials, configs);
     }
 
-    @Override
+    //@Override
     // Create new user context with new config.
     public UserContext updateUserContext(UserContext context, AuthenticatedUser authenticatedUser) 
             throws GuacamoleException {
