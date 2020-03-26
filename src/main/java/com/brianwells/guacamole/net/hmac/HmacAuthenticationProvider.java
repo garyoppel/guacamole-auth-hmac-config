@@ -83,15 +83,14 @@ public class HmacAuthenticationProvider extends SimpleAuthenticationProvider {
     public HmacAuthenticationProvider(TimeProviderInterface timeProvider, Environment environment) throws GuacamoleException {
         this.timeProvider = timeProvider;
         this.environment = environment;
-        environment = new LocalEnvironment();
-                
-        String secretKey = LocalEnvironment.getRequiredProperty(SECRET_KEY);
+                        
+        String secretKey = environment.getRequiredProperty(SECRET_KEY);
         signatureVerifier = new SignatureVerifier(secretKey);
         
-        if (LocalEnvironment.getProperty(TIMESTAMP_AGE_LIMIT) == null){
+        if (environment.getProperty(TIMESTAMP_AGE_LIMIT) == null){
            timestampAgeLimit = TEN_MINUTES;
         }  else {
-           timestampAgeLimit = LocalEnvironment.getProperty(TIMESTAMP_AGE_LIMIT);
+           timestampAgeLimit = environment.getProperty(TIMESTAMP_AGE_LIMIT);
         }
     }
 
@@ -99,10 +98,10 @@ public class HmacAuthenticationProvider extends SimpleAuthenticationProvider {
         timeProvider = new DefaultTimeProvider();
         environment = new LocalEnvironment();
 
-        String secretKey = LocalEnvironment.getRequiredProperty(SECRET_KEY);
+        String secretKey = environment.getRequiredProperty(SECRET_KEY);
         signatureVerifier = new SignatureVerifier(secretKey);
 
-        if (LocalEnvironment.getProperty(TIMESTAMP_AGE_LIMIT) == null){
+        if (environment.getProperty(TIMESTAMP_AGE_LIMIT) == null){
            timestampAgeLimit = TEN_MINUTES;
         }  else {
            timestampAgeLimit = LocalEnvironment.getProperty(TIMESTAMP_AGE_LIMIT);
