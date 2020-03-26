@@ -281,8 +281,8 @@ public class HmacAuthenticationProvider extends SimpleAuthenticationProvider {
             return null;
         }
         
-        environment = new LocalEnvironment();
-        String serverId = environment.getRequiredProperty(HMAC_SERVER_ID);
+        guacEnv = new LocalEnvironment();
+        String serverId = guacEnv.getRequiredProperty(HMAC_SERVER_ID);
 
         StringBuilder message = new StringBuilder(timestamp)
             .append(config.getProtocol())
