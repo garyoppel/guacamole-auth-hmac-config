@@ -32,17 +32,17 @@ public class HmacAuthenticationProvider extends SimpleAuthenticationProvider {
     public static final long TEN_MINUTES = 10 * 60 * 1000;
 
     // Properties file params
-    private final StringGuacamoleProperty HMAC_SERVER_ID = new StringGuacamoleProperty() {
+    private static final StringGuacamoleProperty HMAC_SERVER_ID = new StringGuacamoleProperty() {
         @Override
         public String getName() { return "hmac-server-id"; }
     };
 
-    private final StringGuacamoleProperty SECRET_KEY = new StringGuacamoleProperty() {
+    private static final StringGuacamoleProperty SECRET_KEY = new StringGuacamoleProperty() {
         @Override
         public String getName() { return "secret-key"; }
     };
 
-    private final IntegerGuacamoleProperty TIMESTAMP_AGE_LIMIT = new IntegerGuacamoleProperty() {
+    private static final IntegerGuacamoleProperty TIMESTAMP_AGE_LIMIT = new IntegerGuacamoleProperty() {
         @Override
         public String getName() { return "timestamp-age-limit"; }
     };
@@ -84,7 +84,7 @@ public class HmacAuthenticationProvider extends SimpleAuthenticationProvider {
         this.timeProvider = timeProvider;
         this.environment = environment;
                 
-        String secretKey = LocalEnvironment.getRequiredProperty(SECRET_KEY);
+        String secretKey = new LocalEnvironment.getRequiredProperty(SECRET_KEY);
         signatureVerifier = new SignatureVerifier(secretKey);
         
         if (LocalEnvironment.getProperty(TIMESTAMP_AGE_LIMIT) == null){
