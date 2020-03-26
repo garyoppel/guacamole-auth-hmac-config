@@ -37,7 +37,7 @@ public class HmacAuthenticationProviderTest extends TestCase {
     public void testSuccess() throws GuacamoleException {
         HttpServletRequest request = getHttpServletRequest();
 
-        Credentials credentials = new Credentials();
+        Credentials credentials = new Credentials(null,null,null);
         credentials.setRequest(request);
 
         TimeProviderInterface timeProvider = mock(TimeProviderInterface.class);
@@ -64,7 +64,7 @@ public class HmacAuthenticationProviderTest extends TestCase {
             put(SIGNATURE_PARAM, "uvPcq+epk1wDfxlM5UOZp3bDJ2Y=");
         }});
 
-        Credentials credentials = new Credentials();
+        Credentials credentials = new Credentials(null,null,null);
         credentials.setRequest(request);
 
         TimeProviderInterface timeProvider = mock(TimeProviderInterface.class);
